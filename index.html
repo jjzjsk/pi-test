@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试页面</title>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+      max-width: 90vw;
+    }
+    h1 { margin: 0 0 0.5rem; font-size: 1.9rem; }
+    p { margin: 0.4rem 0; opacity: 0.9; }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      color: #5b4bd6;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+    button:active { transform: translateY(0); }
+    #out { margin-top: 1rem; font-size: 1.05rem; min-height: 1.5em; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>✅ 测试页面运行正常</h1>
+    <p>这是一个简单的静态测试网页。</p>
+    <p id="clock">--:--:--</p>
+    <button id="btn">点我测试交互</button>
+    <div id="out"></div>
+  </main>
+
+  <script>
+    const clock = document.getElementById('clock');
+    const out = document.getElementById('out');
+    const btn = document.getElementById('btn');
+
+    function tick() {
+      clock.textContent = new Date().toLocaleTimeString('zh-CN');
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    let count = 0;
+    btn.addEventListener('click', () => {
+      count += 1;
+      out.textContent = `已点击 ${count} 次`;
+    });
+
+    console.log('测试页面已加载');
+  </script>
+</body>
+</html>
